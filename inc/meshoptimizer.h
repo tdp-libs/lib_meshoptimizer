@@ -11,6 +11,8 @@
 #include <assert.h>
 #include <stddef.h>
 
+#include "lib_platform/Globals.h"
+
 typedef unsigned short ushort_t;
 
 /* Version macro; major * 1000 + minor * 10 + patch */
@@ -613,6 +615,8 @@ inline float meshopt_quantizeFloat(float v, int N)
 #ifdef __cplusplus
 class meshopt_Allocator
 {
+  LIB_PLATFORM_NONCOPYABLE(meshopt_Allocator);
+
 public:
 	template <typename T>
 	struct StorageT
@@ -661,6 +665,8 @@ struct meshopt_IndexAdapter;
 template <typename T>
 struct meshopt_IndexAdapter<T, false>
 {
+  LIB_PLATFORM_NONCOPYABLE(meshopt_IndexAdapter);
+
 	T* result;
 	unsigned int* data;
 	size_t count;
